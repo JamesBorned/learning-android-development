@@ -41,7 +41,7 @@
         <EditText
             android:id="@+id/input_email"
             android:layout_gravity="clip_horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Введите email"
             android:textSize="20sp"
@@ -53,7 +53,7 @@
         <EditText
             android:id="@+id/input_password"
             android:layout_gravity="clip_horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Введите пароль"
             android:textSize="20sp"
@@ -73,22 +73,13 @@
             android:layout_weight="2"/>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="70dp">
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="70dp"
+        android:layout_gravity="center_horizontal"
         android:text="Вход"
         android:background="@color/green"/>
-
-    </LinearLayout>
-
 </LinearLayout>
