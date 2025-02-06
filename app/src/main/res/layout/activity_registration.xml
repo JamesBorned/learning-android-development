@@ -51,7 +51,7 @@
             android:text="по номеру"
             android:gravity="center"
             android:textSize="20sp"
-            android:textColor="#255555"
+            android:textColor="@color/purple_500"
             android:layout_marginTop="30dp"
             android:background="@color/white"
             android:textAllCaps="false"/>
@@ -87,6 +87,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="#255555"
+        android:hint="Введите номер"
         android:inputType="textEmailAddress"
         android:layout_marginTop="30dp"
         />
