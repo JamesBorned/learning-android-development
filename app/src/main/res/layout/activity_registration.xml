@@ -88,9 +88,9 @@
         android:textSize="20sp"
         android:textColor="#255555"
         android:hint="Введите номер"
-        android:inputType="textEmailAddress"
+        android:inputType="phone"
         android:layout_marginTop="30dp"
-        />
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/input_password"

@@ -2,6 +2,7 @@ package com.fionova.myfirstapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.widget.EditText
 import android.widget.TextView
 
@@ -20,12 +21,14 @@ class MainActivity : AppCompatActivity() {
 
         button_number.setOnClickListener {
             selectButton(button_number)
-            input_email_number.setHint("Введите номер")
+            input_email_number.hint = "Введите номер"
+            input_email_number.inputType = InputType.TYPE_CLASS_PHONE
         }
 
         button_email.setOnClickListener {
             selectButton(button_email)
-            input_email_number.setHint("Введите email")
+            input_email_number.hint = "Введите email"
+            input_email_number.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
         }
     }
 
