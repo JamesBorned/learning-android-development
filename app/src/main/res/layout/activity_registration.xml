@@ -90,7 +90,7 @@
         android:hint="Введите номер"
         android:inputType="phone"
         android:layout_marginTop="30dp"
-        tools:ignore="TextFields" />
+        tools:ignore="TextFields"/>
 
     <EditText
         android:id="@+id/input_password"
@@ -100,8 +100,7 @@
         android:textSize="20sp"
         android:textColor="#255555"
         android:inputType="textPassword"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_marginTop="10dp"/>
 
     <EditText
         android:id="@+id/input_password_again"
@@ -115,7 +114,7 @@
         />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
+        android:id="@+id/button_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Зарегистрироваться"
