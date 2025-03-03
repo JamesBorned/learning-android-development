@@ -18,22 +18,22 @@ class LoginActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("setting", Context.MODE_PRIVATE)
 
-        val input_email_login = findViewById<EditText>(R.id.input_email)
+        val input_login = findViewById<EditText>(R.id.input_login)
         val input_password_login = findViewById<EditText>(R.id.input_password)
         val auto_login_check_box = findViewById<CheckBox>(R.id.checkbox)
         val login_button = findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.button)
 
         login_button.setOnClickListener {
-            val email = input_email_login.text.toString()
+            val login = input_login.text.toString()
             val password = input_password_login.text.toString()
             val autoLogin = auto_login_check_box.isChecked
 
-            if (email.isEmpty() || password.isEmpty()) {
+            if (login.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Заполнены не все поля!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (email === getEmail() && password === getPassword()) {
+            if (login == getLogin() && password == getPassword()) {
                 setAutoLogin(autoLogin)
                 startActivity(Intent(this, ContentActivity::class.java))
                 finish()
@@ -44,16 +44,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun saveUserData(email: String, autoLogin: Boolean, password: String) {
-        with(sharedPreferences.edit()) {
-            putString("email", email)
-            putString("password", password)
-            putBoolean("autoLogin", autoLogin)
-            apply()
-        }
-    }
-
-    fun getEmail(): String? = sharedPreferences.getString("email", null)
+    fun getLogin(): String? = sharedPreferences.getString("login", null)
     fun getPassword(): String? = sharedPreferences.getString("password", null)
 
     fun setAutoLogin(enabled: Boolean) {

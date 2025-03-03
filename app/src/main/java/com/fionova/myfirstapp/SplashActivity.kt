@@ -16,11 +16,11 @@ class SplashActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("setting", Context.MODE_PRIVATE)
 
-        val email = sharedPreferences.getString("email", null)
+        val login = sharedPreferences.getString("login", null)
         val password = sharedPreferences.getString("password", null)
         val autoLogin = sharedPreferences.getBoolean("autoLogin", false)
 
-        if (email != null && password != null) {
+        if (login != null && password != null) {
             if (autoLogin) {
                 startActivity(Intent(this, ContentActivity::class.java))
             }

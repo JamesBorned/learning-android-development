@@ -39,7 +39,7 @@
             android:layout_weight="1"/>
 
         <EditText
-            android:id="@+id/input_email"
+            android:id="@+id/input_login"
             android:layout_gravity="clip_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
