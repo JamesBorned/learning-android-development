@@ -3,7 +3,9 @@ package com.fionova.myfirstapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+
 
 class PhonesAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var mPhonesList: ArrayList<PhoneModel> = ArrayList()
@@ -17,6 +19,7 @@ class PhonesAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemView = layoutInflater.inflate(R.layout.recyclerview_item, parent, false)
+
         return PhonesViewHolder(itemView)
     }
 
@@ -31,11 +34,17 @@ class PhonesAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     class PhonesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bind(mPhones: PhoneModel){
-            itemView.product_name.text = mPhones.product_name
-            itemView.price.text = mPhones.price
-            itemView.date.text = mPhones.date
-            itemView.score.text = mPhones.score
+
+        private val name: TextView = itemView.findViewById(R.id.name)
+        private val price: TextView = itemView.findViewById(R.id.price)
+        private val date: TextView = itemView.findViewById(R.id.date)
+        private val score: TextView = itemView.findViewById(R.id.score)
+
+        fun bind(mPhones: PhoneModel) {
+            name.text = mPhones.product_name
+            price.text = mPhones.price
+            date.text = mPhones.date
+            score.text = mPhones.score
         }
     }
 }
