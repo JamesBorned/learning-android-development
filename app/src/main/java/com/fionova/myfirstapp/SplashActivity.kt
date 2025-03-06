@@ -9,7 +9,7 @@ import android.widget.ProgressBar
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        setContentView(R.layout.fragment_splash)
 
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
         progressBar.isIndeterminate = true
