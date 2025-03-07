@@ -1,7 +1,6 @@
 package com.fionova.myfirstapp
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,7 @@ class SplashFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_splash, container, false)
 
         val navController = NavHostFragment.findNavController(this)
-        val sharedPreferences = requireActivity().getSharedPreferences("data", Context.MODE_PRIVATE)
+        val sharedPreferences = requireActivity().getSharedPreferences("setting", Context.MODE_PRIVATE)
 
         if (sharedPreferences.getString("type", "null")!="null")
             if (sharedPreferences.getBoolean("autoLogin", false)){
