@@ -1,21 +1,23 @@
 package com.fionova.myfirstapp
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 
 class RegisterFragment : Fragment() {
     private var selectedButton: androidx.appcompat.widget.AppCompatButton? = null
-    private val sharedPreferences = requireActivity().getSharedPreferences("setting", Context.MODE_PRIVATE)
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,6 +27,7 @@ class RegisterFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_registration, container, false)
 
         val navController = NavHostFragment.findNavController(this)
+        sharedPreferences = requireActivity().getSharedPreferences("setting", Context.MODE_PRIVATE)
 
         val button_number = root.findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.button_number)
         val button_email = root.findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.button_email)
@@ -87,7 +90,7 @@ class RegisterFragment : Fragment() {
 
             saveUserData(login, password)
 
-            navController.navigate(R.id.ContentActivity)
+            navController.navigate(R.id.Fragment_1)
         }
 
         return root
@@ -102,7 +105,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun selectButton(button: androidx.appcompat.widget.AppCompatButton){
-        selectedButton?.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))//getResources().getColor(R.color.green))
+        selectedButton?.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
         selectedButton = button
         selectedButton?.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_500))
     }

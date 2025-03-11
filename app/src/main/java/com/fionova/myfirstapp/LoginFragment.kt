@@ -1,6 +1,7 @@
 package com.fionova.myfirstapp
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +10,12 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 
 class LoginFragment : Fragment() {
-    private val sharedPreferences = requireActivity().getSharedPreferences("setting", Context.MODE_PRIVATE)
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -20,6 +23,7 @@ class LoginFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_login, container, false)
 
         val navController = NavHostFragment.findNavController(this)
+        sharedPreferences = requireActivity().getSharedPreferences("setting", Context.MODE_PRIVATE)
 
         val input_login = root.findViewById<EditText>(R.id.input_login)
         val input_password_login = root.findViewById<EditText>(R.id.input_password)
@@ -38,7 +42,8 @@ class LoginFragment : Fragment() {
             }
             if (login == getLogin() && password == getPassword()) {
                 setAutoLogin(autoLogin)
-                navController.navigate(R.id.ContentActivity)
+
+                navController.navigate(R.id.Fragment_1)
             }
             else {
                 Toast.makeText(requireContext(), "Неверные пароль или email!", Toast.LENGTH_SHORT).show()
@@ -54,6 +59,4 @@ class LoginFragment : Fragment() {
     fun setAutoLogin(enabled: Boolean) {
         sharedPreferences.edit().putBoolean("autoLogin", enabled).apply()
     }
-
-    fun isAutoLoginEnabled(): Boolean = sharedPreferences.getBoolean("autoLogin", false)
 }
