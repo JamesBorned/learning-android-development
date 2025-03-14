@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 
 class RegisterFragment : Fragment() {
     private var selectedButton: androidx.appcompat.widget.AppCompatButton? = null
@@ -70,7 +72,6 @@ class RegisterFragment : Fragment() {
                     Toast.makeText(requireContext(), "В номере телефона отсутствует знак +!", Toast.LENGTH_LONG).show()
                     return@setOnClickListener
                 }
-
                 login = number
             }
             //Проверка пароля на количество символов (минимум 8)
@@ -88,7 +89,20 @@ class RegisterFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            saveUserData(login, password)
+            //saveUserData(login, password)
+            val auth = FirebaseAuth.getInstance()
+
+            auth.createUserWithEmailAndPassword(login.toString(), password).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val editor = sharedPreferences.edit()
+                    editor.putBoolean("userRegistered", true)
+                    editor.apply()
+
+                    navController.navigate(R.id.Fragment_1)
+                }
+            }.addOnFailureListener { exception ->
+                Toast.makeText(requireContext(), exception.localizedMessage, Toast.LENGTH_LONG).show()
+            }
 
             navController.navigate(R.id.Fragment_1)
         }

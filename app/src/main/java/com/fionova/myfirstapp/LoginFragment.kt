@@ -10,9 +10,8 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
@@ -40,14 +39,30 @@ class LoginFragment : Fragment() {
 
                 return@setOnClickListener
             }
-            if (login == getLogin() && password == getPassword()) {
-                setAutoLogin(autoLogin)
 
-                navController.navigate(R.id.Fragment_1)
+            val auth = FirebaseAuth.getInstance()
+
+            auth.signInWithEmailAndPassword(login, password).addOnCompleteListener { task ->
+                if(task.isSuccessful){
+                    val editor = sharedPreferences.edit()
+                    editor.putBoolean("userAuthenticated", true)
+                    editor.apply()
+
+                    setAutoLogin(autoLogin)
+
+                    navController.navigate(R.id.Fragment_1)
+                }
+            }.addOnFailureListener { exception ->
+                Toast.makeText(requireContext(), exception.localizedMessage, Toast.LENGTH_LONG).show()
             }
-            else {
-                Toast.makeText(requireContext(), "Неверные пароль или email!", Toast.LENGTH_SHORT).show()
-            }
+//            if (login == getLogin() && password == getPassword()) {
+//                setAutoLogin(autoLogin)
+//
+//                navController.navigate(R.id.Fragment_1)
+//            }
+//            else {
+//                Toast.makeText(requireContext(), "Неверные пароль или email!", Toast.LENGTH_SHORT).show()
+//            }
         }
 
         return root

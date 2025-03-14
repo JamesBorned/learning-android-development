@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "196604153572",
+    "project_id": "phonerating-9e026",
+    "storage_bucket": "phonerating-9e026.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196604153572:android:a4e0cc98b7ba98859966f1",
+        "android_client_info": {
+          "package_name": "com.fionova.myfirstapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA81v6d2vaVIqu5vrOldkgAzfmBei3jhJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
